@@ -1,8 +1,8 @@
 const shortid = require("shortid");
-custId1 = `${shortid.generate()}`;
-custId2 = `${shortid.generate()}`;
-custId3 = `${shortid.generate()}`;
-custId4 = `${shortid.generate()}`;
+const custId1 = `${shortid.generate()}`;
+const custId2 = `${shortid.generate()}`;
+const custId3 = `${shortid.generate()}`;
+const custId4 = `${shortid.generate()}`;
 
 let users = [
   {

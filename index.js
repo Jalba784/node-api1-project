@@ -32,17 +32,28 @@ server.get("/users", (req, res) => {
 });
 // User by id
 server.get("/users/:id", (req, res) => {
-    const userId = req.params.id;
-    const user = db.getUserById(userId)
-    if (user) {
-        res.json(user)
-    } else {
-        res.status(404).json({
-            message: "User not found"
-        })
-    }
+  const userId = req.params.id;
+  const user = db.getUserById(userId);
+  if (user) {
+    res.json(user);
+  } else {
+    res.status(404).json({
+      message: "User not found"
+    });
+  }
 });
 // Deletes specific user
+server.delete("/users/:id", (req, res) => {
+  const user = db.getUserById(req.params.id);
+  if (user) {
+    db.deleteUser(user.id);
+    res.status(204).end();
+  } else {
+    res.status(404).json({
+      message: "User not found"
+    });
+  }
+});
 // Updates specific user
 
 // Server Listening
