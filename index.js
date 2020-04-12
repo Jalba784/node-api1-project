@@ -31,6 +31,17 @@ server.get("/users", (req, res) => {
   res.json(users);
 });
 // User by id
+server.get("/users/:id", (req, res) => {
+    const userId = req.params.id;
+    const user = db.getUserById(userId)
+    if (user) {
+        res.json(user)
+    } else {
+        res.status(404).json({
+            message: "User not found"
+        })
+    }
+});
 // Deletes specific user
 // Updates specific user
 
