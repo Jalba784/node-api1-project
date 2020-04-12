@@ -12,6 +12,7 @@ server.get("/", (req, res) => {
   console.log("Root has been activated");
   res.send("Big Bang Theory Characters");
 });
+
 // Create User
 server.post("/users", (req, res) => {
   if (!req.body.name || !req.body.bio) {
@@ -25,11 +26,13 @@ server.post("/users", (req, res) => {
   });
   res.status(201).json(newUser);
 });
+
 // All Users
 server.get("/users", (req, res) => {
   const users = db.getUsers();
   res.json(users);
 });
+
 // User by id
 server.get("/users/:id", (req, res) => {
   const userId = req.params.id;
@@ -42,6 +45,7 @@ server.get("/users/:id", (req, res) => {
     });
   }
 });
+
 // Deletes specific user
 server.delete("/users/:id", (req, res) => {
   const user = db.getUserById(req.params.id);
@@ -54,6 +58,7 @@ server.delete("/users/:id", (req, res) => {
     });
   }
 });
+
 // Updates specific user
 server.put("/users/:id", (req, res) => {
   const user = db.getUserById(res.params.id);
