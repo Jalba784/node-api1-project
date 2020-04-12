@@ -55,6 +55,20 @@ server.delete("/users/:id", (req, res) => {
   }
 });
 // Updates specific user
+server.put("/users/:id", (req, res) => {
+  const user = db.getUserById(res.params.id);
+  if (user) {
+    const updateUser = db.updateUser(user.id, {
+      name: req.body.name || user.name,
+      bio: req.body.bio || user.bio
+    });
+    res.json(updateUser);
+  } else {
+    res.status(404).json({
+      message: "User not found"
+    });
+  }
+});
 
 // Server Listening
 server.listen(3222, () => {
